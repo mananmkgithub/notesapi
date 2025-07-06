@@ -1,82 +1,139 @@
+# 📘 Notes & Users REST API with JWT Authentication
 
-# 🗂️ Notes & Users API (Node.js + Express + MongoDB)
-
-This project is a RESTful API built using **Node.js**, **Express**, and **Mongoose**. It provides basic CRUD operations for managing **users** and their **notes**.
+A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (Mongoose)**, and **JWT**. This app supports user registration, login, and secure CRUD operations for personal notes.
 
 ---
 
-## 📁 Project Structure
-project/
-│
+## 📂 Project Structure
+
+```
+├── auth/
+│   └── jwt.js/auth.js                  # JWT middleware & token generator
 ├── controller/
-│ ├── usercontroller.js
-│ └── notescontroller.js
-│
-├── routes/
-│ ├── userroutes.js
-│ └── notesroutes.js
-│
+│   ├── usercontroller.js       # Handles user logic
+│   └── notescontroller.js      # Handles notes logic
 ├── models/
-│ ├── User.js
-│ └── Notes.js
-│
-└── app.js 
+│   ├── user.js                 # User schema
+│   └── notes.js                # Notes schema
+├── routes/
+│   ├── userRoutes.js           # User endpoints
+│   └── notesRoutes.js          # Notes endpoints
+├── app.js   
+ ---- Package.json                # Entry point
+└── .env                        # Environment configuration
+```
 
+---
+
+## 🧾 Features
+
+✅ User Registration & Login\
+✅ JWT Authentication Middleware\
+✅ CRUD Operations on Notes\
+✅ User-specific note filtering\
+✅ Modular MVC code structure
 
 ---
 
-## 🧪 API Endpoints
+## 🔐 Authentication Flow
+
+1. A user registers using `/Adduser`
+2. Logs in using `/login` and receives a JWT token
+3. Token is passed in `Authorization: Bearer <token>` for protected routes
 
 ---
 
+## 🔗 API Endpoints
 
-### 📝 NOTES ROUTES
+### 👥 User Routes (prefix: `/user`)
 
-| Method | Route                  | Description                        |
-|--------|------------------------|------------------------------------|
-| GET    | `/notes`                    | Get all notes                      |
-| POST   | `/notes/Addnotes`            | Add a new note                     |
-| GET    | `/notes/Findnotes/:id`       | Get a note by ID                   |
-| PUT    | `/notes/Updatenotes/:id`     | Update a note by ID                |
-| DELETE | `/notes/Deletenotes/:id`     | Delete a note by ID                |
+| Method | Endpoint          | Description         | Auth |
+| ------ | ----------------- | ------------------- | ---- |
+| POST   | `/users/Adduser`        | Register a new user | ❌    |
+| POST   | `/users/login`          | Login and get token | ❌    |
+| DELETE | `/users/Deleteuser/:id` | Delete user by ID   | ✅    |
 
-### 📌 USER ROUTES
+### 📝 Notes Routes (prefix: `/notes`)
 
-| Method | Route               | Description                             |
-|--------|---------------------|------------------------------------     |
-| GET    | `/users`                 | Get all users                      |
-| POST   | `/users/Adduser`          | Add a new user                    |
-| GET    | `/users/Finduser`         | Find a user (update logic needed)  |
-| DELETE | `/users/Deleteuser/:id`   | Delete a user by ID                |
+| Method | Endpoint                | Description                     | Auth |
+| ------ | ----------------------- | -----------------------        | ---- |
+| GET    | `/notes/`                     | Get all notes (public)  | ❌    |
+| GET    | `/notes/usernotes`            | Notes by logged-in user | ✅    |
+| POST   | `/notes/Addnotes`             | Create a new note       | ✅    |
+| GET    | `/notes//Findnotes/:notesname` | Find note by name       | ✅    |
+| PUT    | `/notes/update/:id`           | Update note by ID       | ✅    |
+| DELETE | `/notes/Deletenotes/:id`      | Delete note by ID       | ✅    |
 
 ---
+
+## ⚙️ Installation Guide (Step-by-Step)
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/mananmkgithub/notesapi.git
+
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Configure Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+your pc requirement
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/notesapp
+JWT_SECRET=yourSecretKey
+```
+
+### 4️⃣ Run the Server
+
+```bash
+npm run dev
+```
+
+Your server will run on `http://localhost:5000`
+
 ---
 
-## ⚙️ How to Run Locally
+## 🛠️ Tech Stack
 
-1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/mananmkgithub/notesapi.git
+- **Node.js**
+- **Express.js**
+- **MongoDB + Mongoose**
+- **JWT (jsonwebtoken)**
+- **bcryptjs** for password hashing
+- **dotenv** for config
 
-2. ** Install dependencies **  
-   npm install
+---
 
+## 📬 Postman 
 
-Set up environment variables
-Create a .env file and add your MongoDB URI:
+Add this header for secured endpoints:
 
-Start the server
-npm start
+```
+Authorization: Bearer <your-token>
+```
 
-🛠️ Tech Stack
-Node.js
+Example:
 
-Express.js
+```bash
+curl -H "Authorization: Bearer eyJ..." http://localhost:5000/notes/usernotes
+```
 
-MongoDB & Mongoose
+---
 
-REST API
+## 👨‍💻 Author
 
+Developed by **Manan Kolate**\
+🔗 [GitHub Profile](https://github.com/mananmkgithub)
 
+---
 
 

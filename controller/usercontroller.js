@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 const { jwtmiddleware, generatewebtoken } = require('../auth/jwt')
 const bcrypt = require('bcrypt')
+const Notes = require('../models/notes')
 
 exports.register = async (req, res, next) => {
     try {
@@ -46,6 +47,14 @@ exports.login = async (req, res, next) => {
 exports.deleteuser = async (req, res, next) => {
     try {
         const did = req.params.id
+        const userid=req.user.userdata.id
+        const findusernoteid=await User.findById({_id:userid})
+        const data=await findusernoteid.populate('notes')
+        for(let i in data.notes){
+            let myid=data.notes[i]._id
+            const ddata=await Notes.findByIdAndDelete({_id:myid})
+            console.log('all data deleted')
+        }
         const duser = await User.findByIdAndDelete({ _id: did })
         if (!duser) {
             return res.status(404).json({ error: 'User is Not Found..' });
@@ -57,3 +66,5 @@ exports.deleteuser = async (req, res, next) => {
         return res.status(500).json({ error: 'Internal Server Error' })
     }
 }
+
+

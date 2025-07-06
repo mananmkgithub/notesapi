@@ -14,12 +14,26 @@ exports.getallnotes = async (req, res, next) => {
     }
 }
 
+exports.getusernotes = async (req, res, next) => {
+    try {
+        const data = req.user.userdata.username
+        const findusername = await User.findOne({ username: data })
+        const ss=await findusername.populate('notes')
+        return res.status(200).json(ss.notes)
+    } catch (er) {
+        return res.status(500).json({ error: 'Internal Server Error' })
+    }
+}
+
 //add notes
 exports.Postnotes = async (req, res, next) => {
     try {
         const { notesname, notesdescription } = req.body
         const note = new Notes({ notesname: notesname, notesdescription: notesdescription })
-        console.log(req.user)
+        const jwtusername = req.user.userdata.username
+        const findusername = await User.findOneAndUpdate({ username: jwtusername })
+        findusername.notes.push(note._id)
+        await findusername.save()
         const result = await note.save()
         console.log("Data Is Saved")
         return res.status(200).json(result)
@@ -30,19 +44,19 @@ exports.Postnotes = async (req, res, next) => {
 }
 
 //Find notes in database
-exports.Findnotes = async(req, res, next) => {
-   try{
-        const findnotes=req.params.notesname
-        const fdata=await Notes.findOne({notesname:findnotes})
+exports.Findnotes = async (req, res, next) => {
+    try {
+        const findnotes = req.params.notesname
+        const fdata = await Notes.findOne({ notesname: findnotes })
         if (!fdata) {
             return res.status(404).json({ error: 'notes are not found' });
         }
         console.log("note is find...")
         res.status(200).json(fdata);
-   }
-   catch(er){
+    }
+    catch (er) {
         return res.status(500).json({ error: 'Internal Server Error' })
-   }
+    }
 }
 //update notes
 exports.Updatenotes = async (req, res, next) => {
@@ -72,7 +86,7 @@ exports.Deletenotes = async (req, res, next) => {
             return res.status(404).json({ error: 'notes are not deleted' });
         }
         console.log('data deleted');
-        res.status(200).json({'message':"Your Note is Deleted..."});
+        res.status(200).json({ 'message': "Your Note is Deleted..." });
     }
     catch (er) {
         return res.status(500).json({ error: 'Internal Server Error' })
