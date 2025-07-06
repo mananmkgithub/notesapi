@@ -46,13 +46,7 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 🔗 API Endpoints
 
 #👥 User Routes (prefix: `/user`)
-#sample to add user
-```json
-#{
-  "username": "manan_kolate",
-  "password": "SecurePass123",
-  "email": "manan.kolate@example.com"
-}
+
 
 | Method | Endpoint          | Description         |
 | ------ | ----------------- | ------------------- | 
@@ -72,11 +66,8 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 | DELETE | `/notes/Deletenotes/:id`     | Delete note by ID      | 
 
 
-#sample to add notes
-#{
-  "notesname": "Learn Express.js",
-  "notesdescription": "A beginner's guide to building APIs using Express.js in Node.js. Covers routing, middleware, and RESTful design."
-}
+
+
 
 #you are confuse to get my gitub repo for full code--https://github.com/mananmkgithub/notesapi
 
