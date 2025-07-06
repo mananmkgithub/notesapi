@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Notes = require('../models/notes')
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -14,10 +15,11 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: [true, "Email is required"]
   },
-  usernotes: [{
-    user: mongoose.SchemaTypes.ObjectId,
-    ref: "notes",
+  notes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Notes"
   }]
 });
+
 
 module.exports = mongoose.model('User', UserSchema);

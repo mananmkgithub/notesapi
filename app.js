@@ -2,12 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose');
 require('dotenv').config()
 const notesroutes=require('./routes/noteroute')
-const useroutes=require('./routes/userroute')
+const useroutes=require('./routes/userroute');
+const passport = require('passport');
 const app = express()
 const PORT = process.env.PORT || 4000
 const M_URL = process.env.MONGO_URL
 app.use(express.json())
-
+app.use(passport.initialize())
 app.use('/notes',notesroutes)
 app.use('/users',useroutes)
 

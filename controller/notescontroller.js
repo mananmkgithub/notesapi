@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Notes = require('../models/notes')
-const notes = require('../models/notes')
+
 
 //get all notes 
 exports.getallnotes = async (req, res, next) => {
@@ -30,7 +30,7 @@ exports.Postnotes = async (req, res, next) => {
 exports.Findnotes = async(req, res, next) => {
    try{
         const findnotes=req.params.notesname
-        const fdata=await notes.findOne({notesname:findnotes})
+        const fdata=await Notes.findOne({notesname:findnotes})
         if (!fdata) {
             return res.status(404).json({ error: 'notes are not found' });
         }
@@ -64,7 +64,7 @@ exports.Updatenotes = async (req, res, next) => {
 exports.Deletenotes = async (req, res, next) => {
     try {
         const did = req.params.id
-        const deletenotes = await notes.findByIdAndDelete({ _id: did })
+        const deletenotes = await Notes.findByIdAndDelete({ _id: did })
         if (!deletenotes) {
             return res.status(404).json({ error: 'notes are not deleted' });
         }
