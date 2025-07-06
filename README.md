@@ -25,7 +25,7 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 
 ---
 
- #🧾 Features
+ 🧾 Features
 
 ✅ User Registration & Login\
 ✅ JWT Authentication Middleware\
@@ -48,7 +48,7 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 #👥 User Routes (prefix: `/user`)
 #sample to add user
 ```json
-#{
+{
   "username": "manan_kolate",
   "password": "SecurePass123",
   "email": "manan.kolate@example.com"
@@ -73,7 +73,7 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 
 
 #sample to add notes
-#{
+{
   "notesname": "Learn Express.js",
   "notesdescription": "A beginner's guide to building APIs using Express.js in Node.js. Covers routing, middleware, and RESTful design."
 }
