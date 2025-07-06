@@ -56,13 +56,13 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 ### 📝 Notes Routes (prefix: `/notes`)
 
 | Method | Endpoint                | Description                     
-| ------ | ----------------------- | ----------------------- | ---- |
-| GET    | `/notes/`                     | Get all notes (public)  |
-| GET    | `/notes/usernotes`            | Notes by logged-in user |
-| POST   | `/notes/Addnotes`             | Create a new note       | 
-| GET    | `/notes//Findnotes/:notesname` | Find note by name       | 
-| PUT    | `/notes/update/:id`           | Update note by ID       | 
-| DELETE | `/notes/Deletenotes/:id`      | Delete note by ID       | 
+| ------ | ----------------------- | ----------------------- |
+| GET    | `/notes/`                | Get all notes (public)  |
+| GET    | `/notes/usernotes`        | Notes by logged-in user |
+| POST   | `/notes/Addnotes`          | Create a new note      | 
+| GET    | `/notes//Findnotes/:notesname`| Find note by name  |
+| PUT    | `/notes/update/:id`          | Update note by ID     | 
+| DELETE | `/notes/Deletenotes/:id`     | Delete note by ID      | 
 
 ---
 
