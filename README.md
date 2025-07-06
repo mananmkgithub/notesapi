@@ -25,7 +25,7 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 
 ---
 
-## 🧾 Features
+ 🧾 Features
 
 ✅ User Registration & Login\
 ✅ JWT Authentication Middleware\
@@ -35,7 +35,7 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 
 ---
 
-## 🔐 Authentication Flow
+ 🔐 Authentication Flow
 
 1. A user registers using `/Adduser`
 2. Logs in using `/login` and receives a JWT token
@@ -43,9 +43,9 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 
 ---
 
-## 🔗 API Endpoints
+🔗 API Endpoints
 
-### 👥 User Routes (prefix: `/user`)
+#👥 User Routes (prefix: `/user`)
 #sample to add user
 ```json
 {
@@ -90,14 +90,12 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 git clone https://github.com/mananmkgithub/notesapi.git
 
 ```
-
-### 2️⃣ Install Dependencies
+ 2️⃣ Install Dependencies
 
 ```bash
 npm install
 ```
-
-### 3️⃣ Configure Environment Variables
+3️⃣ Configure Environment Variables
 
 Create a `.env` file in the root directory:
 
@@ -108,7 +106,7 @@ MONGODB_URI=mongodb://localhost:27017/notesapp
 JWT_SECRET=yourSecretKey
 ```
 
-### 4️⃣ Run the Server
+4️⃣ Run the Server
 
 ```bash
 npm run dev
