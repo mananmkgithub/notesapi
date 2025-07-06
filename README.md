@@ -47,22 +47,22 @@ A clean and modular **Node.js REST API** built using **Express.js**, **MongoDB (
 
 ### 👥 User Routes (prefix: `/user`)
 
-| Method | Endpoint          | Description         | Auth |
-| ------ | ----------------- | ------------------- | ---- |
-| POST   | `/users/Adduser`        | Register a new user | ❌    |
-| POST   | `/users/login`          | Login and get token | ❌    |
-| DELETE | `/users/Deleteuser/:id` | Delete user by ID   | ✅    |
+| Method | Endpoint          | Description         |
+| ------ | ----------------- | ------------------- | 
+| POST   | `/users/Adduser`        | Register a new user |
+| POST   | `/users/login`          | Login and get token | 
+| DELETE | `/users/Deleteuser/:id` | Delete user by ID   | 
 
 ### 📝 Notes Routes (prefix: `/notes`)
 
-| Method | Endpoint                | Description                     | Auth |
-| ------ | ----------------------- | -----------------------        | ---- |
-| GET    | `/notes/`                     | Get all notes (public)  | ❌    |
-| GET    | `/notes/usernotes`            | Notes by logged-in user | ✅    |
-| POST   | `/notes/Addnotes`             | Create a new note       | ✅    |
-| GET    | `/notes//Findnotes/:notesname` | Find note by name       | ✅    |
-| PUT    | `/notes/update/:id`           | Update note by ID       | ✅    |
-| DELETE | `/notes/Deletenotes/:id`      | Delete note by ID       | ✅    |
+| Method | Endpoint                | Description                     
+| ------ | ----------------------- | ----------------------- | ---- |
+| GET    | `/notes/`                     | Get all notes (public)  |
+| GET    | `/notes/usernotes`            | Notes by logged-in user |
+| POST   | `/notes/Addnotes`             | Create a new note       | 
+| GET    | `/notes//Findnotes/:notesname` | Find note by name       | 
+| PUT    | `/notes/update/:id`           | Update note by ID       | 
+| DELETE | `/notes/Deletenotes/:id`      | Delete note by ID       | 
 
 ---
 
