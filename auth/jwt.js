@@ -17,7 +17,7 @@ const jwtmiddleware = (req, res, next) => {
     }
     catch (er) {
         // token not verfiy
-        console.log(err)
+        console.log(er)
         res.status(401).json({ error: "Invaild Token" })
     }
 }

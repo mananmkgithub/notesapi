@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Notes = require('../models/notes')
+const User = require('../models/user');
 
 
 //get all notes 
@@ -18,10 +19,12 @@ exports.Postnotes = async (req, res, next) => {
     try {
         const { notesname, notesdescription } = req.body
         const note = new Notes({ notesname: notesname, notesdescription: notesdescription })
+        console.log(req.user)
         const result = await note.save()
         console.log("Data Is Saved")
         return res.status(200).json(result)
     } catch (er) {
+        console.log(er)
         return res.status(500).json({ error: 'Internal Server Error' })
     }
 }

@@ -3,10 +3,11 @@ const notesroutes=express.Router()
 const notescontroller=require('../controller/notescontroller')
 const { jwtmiddleware, generatewebtoken } = require('../auth/jwt')
 
-notesroutes.get('/',jwtmiddleware,notescontroller.getallnotes)
-notesroutes.post('/Addnotes',notescontroller.Postnotes)
-notesroutes.get('/Findnotes/:notesname',notescontroller.Findnotes)
-notesroutes.put('/update/:id',notescontroller.Updatenotes)
-notesroutes.delete('/Deletenotes/:id',notescontroller.Deletenotes)
+notesroutes.get('/',notescontroller.getallnotes)
+notesroutes.get('/usernotes',jwtmiddleware,notescontroller.getallnotes)
+notesroutes.post('/Addnotes',jwtmiddleware,notescontroller.Postnotes)
+notesroutes.get('/Findnotes/:notesname',jwtmiddleware,notescontroller.Findnotes)
+notesroutes.put('/update/:id',jwtmiddleware,notescontroller.Updatenotes)
+notesroutes.delete('/Deletenotes/:id',jwtmiddleware,notescontroller.Deletenotes)
 
 module.exports=notesroutes
